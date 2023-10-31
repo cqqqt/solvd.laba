@@ -1,8 +1,5 @@
 package com.solvd.classes;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Faculty extends EducationalElement {
     private String facultyName;
     private Employee dean;

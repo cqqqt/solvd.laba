@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        University university = new University("Solvd University", "Solvd Location", new ArrayList<Person>());
+        University university = new University("Solvd University", "Solvd Location");
 
         Faculty faculty = new Faculty("Faculty of Science", new Employee("John", "Doe", "1234567890", 45, 1000));
 

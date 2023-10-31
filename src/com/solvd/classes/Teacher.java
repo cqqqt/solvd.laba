@@ -15,6 +15,14 @@ public class Teacher extends Employee {
         this.experienceAge = 0;
     }
 
+    public Faculty getFaculty() {
+        return faculty;
+    }
+
+    public void setFaculty(Faculty faculty) {
+        this.faculty = faculty;
+    }
+
     public List<String> getSubjects() {
         return subjects;
     }

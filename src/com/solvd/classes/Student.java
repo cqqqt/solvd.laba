@@ -2,10 +2,7 @@ package com.solvd.classes;
 
 import com.solvd.enums.Subjects;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Random;
+import java.util.*;
 
 public class Student extends Person {
     private Faculty faculty;
@@ -66,7 +63,14 @@ public class Student extends Person {
         Random random = new Random();
         int originalDifficulty = random.nextInt(11);
         int invertedDifficulty = 10 - originalDifficulty;
-        int ticketNumber = random.nextInt(10) + 1;
+
+        Scanner scanner = new Scanner(System.in);
+        int ticketNumber;
+        do {
+            System.out.println("Введите номер билета (от 1 до 25):");
+            ticketNumber = scanner.nextInt();
+        } while (ticketNumber < 1 || ticketNumber > 25);
+
         List<String> subjectNames = new ArrayList<>();
         for (Subjects subject : subjects) {
             subjectNames.add(subject.getName());
@@ -79,6 +83,7 @@ public class Student extends Person {
                 "Сложность билета: " + invertedDifficulty + "\n" +
                 "Результат экзамена: " + (int) result;
     }
+
 
     private double calculateAverageGrade() {
         double total = 0;

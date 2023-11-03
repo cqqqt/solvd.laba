@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Teacher extends Employee {
-    private Faculty faculty;
-    private List<String> subjects;
-    private int experienceAge;
+    protected Faculty faculty;
+    protected List<String> subjects;
+    protected int experienceAge;
 
     public Teacher(String firstName, String lastName, String phoneNumber, int age, int payScale, Faculty faculty) {
         super(firstName, lastName, phoneNumber, age, payScale);

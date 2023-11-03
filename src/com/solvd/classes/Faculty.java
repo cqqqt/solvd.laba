@@ -1,7 +1,7 @@
 package com.solvd.classes;
 
 public class Faculty extends EducationalElement {
-    private String facultyName;
+    protected String facultyName;
     private Employee dean;
 
     public Faculty(String facultyName, Employee dean) {

@@ -65,20 +65,31 @@ public class Student extends Person {
         int invertedDifficulty = 10 - originalDifficulty;
 
         Scanner scanner = new Scanner(System.in);
+
+        System.out.println("\nВыберите предмет (введите номер):");
+        List<String> subjectNames = new ArrayList<>();
+        for (int i = 0; i < subjects.size(); i++) {
+            Subjects subject = subjects.get(i);
+            String subjectName = subject.getName();
+            subjectNames.add(subjectName);
+            System.out.println((i + 1) + ". " + subjectName);
+        }
+        int subjectChoice;
+        do {
+            subjectChoice = scanner.nextInt();
+        } while (subjectChoice < 1 || subjectChoice > subjects.size());
+
+        String subjectName = subjectNames.get(subjectChoice - 1);
+
         int ticketNumber;
         do {
-            System.out.println("Введите номер билета (от 1 до 25):");
+            System.out.println("\nВведите номер билета (от 1 до 25):");
             ticketNumber = scanner.nextInt();
         } while (ticketNumber < 1 || ticketNumber > 25);
 
-        List<String> subjectNames = new ArrayList<>();
-        for (Subjects subject : subjects) {
-            subjectNames.add(subject.getName());
-        }
-        String subjectName = getRandomSubject(subjectNames);
         double result = (GPA + originalDifficulty) / 2;
 
-        return "Предмет: " + subjectName + "\n" +
+        return "\nПредмет: " + subjectName + "\n" +
                 "Номер билета: " + ticketNumber + "\n" +
                 "Сложность билета: " + invertedDifficulty + "\n" +
                 "Результат экзамена: " + (int) result;

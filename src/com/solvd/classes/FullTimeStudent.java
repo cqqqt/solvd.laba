@@ -7,8 +7,8 @@ public class FullTimeStudent extends Student {
     private List<Course> courses;
     private List<Schedule> schedule;
 
-    public FullTimeStudent(String firstName, String lastName, String phoneNumber, int age, Faculty faculty, String specialization, double GPA) {
-        super(firstName, lastName, phoneNumber, age, faculty, specialization, GPA);
+    public FullTimeStudent(String firstName, String lastName, String phoneNumber, int age, Faculty faculty, String specialization) {
+        super(firstName, lastName, phoneNumber, age, faculty, specialization);
         this.courses = new ArrayList<>();
         this.schedule = new ArrayList<>();
     }

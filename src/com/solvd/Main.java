@@ -3,16 +3,19 @@ package com.solvd;
 import com.solvd.classes.*;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
         University university = new University("Solvd University", "Solvd Location");
 
         Faculty faculty = new Faculty("Faculty of Science", new Employee("John", "Doe", "1234567890", 45, 1000));
 
         Teacher teacher = new Teacher("Alice", "Smith", "9876543210", 35, 500, faculty);
 
-        Student student = new Student("Bob", "Johnson", "5555555555", 20, faculty, "Computer Science", 3.5);
+        Student student = new Student("Bob", "Johnson", "5555555555", 20, faculty, "Computer Science");
 
         Classroom classroom = new Classroom("Room101", 50, "Projector");
 
@@ -34,5 +37,35 @@ public class Main {
         System.out.println("Course Name: " + course.getName());
         System.out.println("Schedule Day: " + schedule.getDayOfWeek() + ", Time: " + schedule.getStartTime());
         System.out.println("Professor: " + professor.getFirstName() + " " + professor.getLastName());
+
+        int choice;
+        do {
+            System.out.println("Меню студента (Введите цифру 0-3):");
+            System.out.println("1 - Список предметов.");
+            System.out.println("2 - Список оценок.");
+            System.out.println("3 - Пройти экзамен.");
+            System.out.println("0 - Выйти.");
+
+            choice = scanner.nextInt();
+
+            switch (choice) {
+                case 1:
+                    System.out.println("Список предметов: " + student.getSubjects());
+                    break;
+                case 2:
+                    System.out.println("Список оценок: " + student.getGrades());
+                    break;
+                case 3:
+                    System.out.println(student.takeExam());
+                    break;
+                case 0:
+                    System.out.println("До свидания!");
+                    break;
+                default:
+                    System.out.println("Некорректный выбор. Попробуйте снова.");
+            }
+        } while (choice != 0);
+
+        scanner.close();
     }
 }

@@ -1,6 +1,7 @@
 package com.solvd.classes;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Course extends EducationalElement {
     private Teacher teacher;
@@ -12,6 +13,31 @@ public class Course extends EducationalElement {
         this.teacher = teacher;
         this.students = students;
         this.hours = hours;
+    }
+
+    @Override
+    public String toString() {
+        return "Course{" +
+                "teacher=" + teacher +
+                ", students=" + students +
+                ", hours=" + hours +
+                "} " + super.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Course course = (Course) o;
+        return hours == course.hours &&
+                Objects.equals(teacher, course.teacher) &&
+                Objects.equals(students, course.students);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), teacher, students, hours);
     }
 
     public Teacher getTeacher() {

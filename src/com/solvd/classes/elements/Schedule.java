@@ -1,17 +1,40 @@
-package com.solvd.classes;
+package com.solvd.classes.elements;
 
-public class Schedule extends EducationalElement {
+import com.solvd.interfaces.IEducationalElement;
+
+public class Schedule implements IEducationalElement {
+
+    private String name;
     private String dayOfWeek;
     private String startTime;
     private Course course;
     private Classroom classroom;
 
     public Schedule(String name, String dayOfWeek, String startTime, Course course, Classroom classroom) {
-        super(name);
+        this.name = name;
         this.dayOfWeek = dayOfWeek;
         this.startTime = startTime;
         this.course = course;
         this.classroom = classroom;
+    }
+
+    @Override
+    public String toString() {
+        return "–асписание " + name + "{" +
+                "день недели: " + dayOfWeek +
+                ", врем€ начала: " + startTime +
+                ", курс: " + course +
+                ", кабинет: " + classroom +
+                "} " + super.toString();
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDayOfWeek() {

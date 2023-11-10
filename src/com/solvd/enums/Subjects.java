@@ -1,17 +1,18 @@
 package com.solvd.enums;
 
 public enum Subjects {
-    ENGLISH_LANGUAGE("ENGLISH LANGUAGE"),
-    HISTORY("HISTORY"),
-    MATHEMATICS("MATHEMATICS"),
-    PHYSICS("PHYSICS"),
-    CHEMISTRY("CHEMISTRY"),
-    BIOLOGY("BIOLOGY"),
-    LITERATURE("LITERATURE"),
-    GEOGRAPHY("GEOGRAPHY"),
-    SPORTS_AND_PHYSICAL_ACTIVITY("SPORTS_AND PHYSICAL ACTIVITY"),
-    ECONOMICS("ECONOMICS"),
-    SOCIAL_SCIENCES("SOCIAL SCIENCES");
+
+    ENGLISH_LANGUAGE("¿Õ√À»…— »… ﬂ«€ "),
+    HISTORY("»—“Œ–»ﬂ"),
+    MATHEMATICS("Ã¿“≈Ã¿“» ¿"),
+    PHYSICS("‘»«» ¿"),
+    CHEMISTRY("’»Ã»ﬂ"),
+    BIOLOGY("¡»ŒÀŒ√»ﬂ"),
+    LITERATURE("À»“≈–¿“”–¿"),
+    GEOGRAPHY("¡»Œ√–¿‘»ﬂ"),
+    SPORTS_AND_PHYSICAL_ACTIVITY("‘»«»◊≈— ¿ﬂ  ”À‹“”–¿"),
+    ECONOMICS("› ŒÕŒÃ» ¿"),
+    SOCIAL_SCIENCES("Œ¡Ÿ≈—“¬Œ«Õ¿Õ»≈");
 
     private final String name;
 

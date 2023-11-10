@@ -1,9 +1,12 @@
-package com.solvd.classes;
+package com.solvd.classes.persons;
+
+import com.solvd.classes.elements.Faculty;
 
 import java.util.List;
 import java.util.Objects;
 
 public class Professor extends Teacher {
+
     private List<String> academicDegrees;
     private List<String> researchPapers;
 

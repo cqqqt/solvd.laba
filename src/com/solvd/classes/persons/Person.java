@@ -1,6 +1,7 @@
-package com.solvd.classes;
+package com.solvd.classes.persons;
 
 public abstract class Person {
+
     private String firstName;
     private String lastName;
     private String phoneNumber;

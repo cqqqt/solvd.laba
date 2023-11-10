@@ -1,15 +1,21 @@
-package com.solvd.classes;
+package com.solvd.classes.elements;
+
+import com.solvd.classes.persons.Student;
+import com.solvd.classes.persons.Teacher;
+import com.solvd.interfaces.IEducationalElement;
 
 import java.util.List;
 import java.util.Objects;
 
-public class Course extends EducationalElement {
+public class Course implements IEducationalElement {
+
+    private String name;
     private Teacher teacher;
     private List<Student> students;
     private int hours;
 
     public Course(String name, Teacher teacher, List<Student> students, int hours) {
-        super(name);
+        this.name = name;
         this.teacher = teacher;
         this.students = students;
         this.hours = hours;
@@ -17,10 +23,10 @@ public class Course extends EducationalElement {
 
     @Override
     public String toString() {
-        return "Course{" +
-                "teacher=" + teacher +
-                ", students=" + students +
-                ", hours=" + hours +
+        return "Курс " + name + "{" +
+                "учитель: " + teacher +
+                ", студенты: " + students +
+                ", отведенные часы: " + hours +
                 "} " + super.toString();
     }
 
@@ -33,6 +39,15 @@ public class Course extends EducationalElement {
         return hours == course.hours &&
                 Objects.equals(teacher, course.teacher) &&
                 Objects.equals(students, course.students);
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override

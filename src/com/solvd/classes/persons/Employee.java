@@ -1,6 +1,7 @@
-package com.solvd.classes;
+package com.solvd.classes.persons;
 
 public class Employee extends Person {
+
     private int payScale;
 
     public Employee(String firstName, String lastName, String phoneNumber, int age, int payScale) {

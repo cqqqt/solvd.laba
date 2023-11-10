@@ -1,9 +1,12 @@
-package com.solvd.classes;
+package com.solvd.classes.persons;
+
+import com.solvd.classes.elements.Faculty;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Teacher extends Employee {
+
     protected Faculty faculty;
     protected List<String> subjects;
     protected int experienceAge;

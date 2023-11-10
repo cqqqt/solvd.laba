@@ -1,15 +1,17 @@
-package com.solvd.classes;
+package com.solvd.classes.persons;
 
+import com.solvd.classes.elements.Faculty;
 import com.solvd.enums.Subjects;
 
 import java.util.*;
 
 public class Student extends Person {
+
     private Faculty faculty;
     private String specialization;
     private double GPA;
-    private List<Integer> grades;
-    private List<Subjects> subjects;
+    private final List<Integer> grades;
+    private final List<Subjects> subjects;
 
     public Student(String firstName, String lastName, String phoneNumber, int age, Faculty faculty, String specialization) {
         super(firstName, lastName, phoneNumber, age);
@@ -113,7 +115,7 @@ public class Student extends Person {
                 ", GPA=" + GPA +
                 ", grades=" + grades +
                 ", subjects=" + subjects +
-                "} " + super.toString();
+                "} ";
     }
 
     @Override

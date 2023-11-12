@@ -41,6 +41,7 @@ public class University {
     }
 
     public static class Creator {
+
         private static final List<String> FIRST_NAMES = Arrays.asList("Алексей", "Максим", "Дмитрий", "Глеб", "Александр", "Павел");
         private static final List<String> LAST_NAMES = Arrays.asList("Курышев", "Орлов", "Прохоренко", "Прусаков", "Золотарев", "Уланов");
         private static final List<String> PHONE_NUMBERS = Arrays.asList("375296164399", "375296472834", "375294719060");

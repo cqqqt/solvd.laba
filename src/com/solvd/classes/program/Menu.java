@@ -30,6 +30,7 @@ public class Menu {
         int choice;
 
         do {
+            System.out.println("hello");
             System.out.println("\nМеню университета (Введите цифру 0-4):");
             System.out.println("1 - Список студентов.");
             System.out.println("2 - Список преподавателей.");

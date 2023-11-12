@@ -1,6 +1,5 @@
 /.idea/
 /lib/
 /out/
-/log4j2.xml
-/SolvdPractice.iml
-/.gitignore
+log4j2.xml
+SolvdPractice.iml

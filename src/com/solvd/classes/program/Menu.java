@@ -6,6 +6,14 @@ import com.solvd.classes.persons.Student;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Scanner;
 
@@ -28,44 +36,68 @@ public class Menu {
     }
 
     public void startMenu() {
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in, StandardCharsets.UTF_8.name());
         int choice;
 
-        do {
-            System.out.println("\nМеню университета (Введите цифру 0-5):");
-            System.out.println("1 - Список студентов.");
-            System.out.println("2 - Список преподавателей.");
-            System.out.println("3 - Список факультетов.");
-            System.out.println("4 - Сдать экзамен.");
-            System.out.println("5 - Выйти.\n");
+        try (BufferedWriter fileWriter = createLogFile()) {
+            do {
+                System.out.println("\nМеню университета (Введите цифру 0-5):");
+                System.out.println("1 - Список студентов.");
+                System.out.println("2 - Список преподавателей.");
+                System.out.println("3 - Список факультетов.");
+                System.out.println("4 - Сдать экзамен.");
+                System.out.println("5 - Выйти.\n");
 
-            choice = scanner.nextInt();
+                choice = scanner.nextInt();
+                fileWriter.write("Выбор пользователя: " + choice + "\n");
 
-            switch (choice) {
-                case 1:
-                    System.out.println("\nСписок студентов:\n" + formatList(university.getStudentList()));
-                    break;
-                case 2:
-                    System.out.println("\nСписок преподавателей:\n" + formatList(university.getEmployeeList()));
-                    break;
-                case 3:
-                    System.out.println("\nСписок факультетов:\n" + formatList(university.getFacultyList()));
-                    break;
-                case 4:
-                    takeExam();
-                    break;
-                case 5:
-                    System.out.println("До свидания!");
-                    break;
-                default:
-                    System.out.println("Некорректный выбор. Попробуйте снова.");
-            }
-        } while (choice != 5);
+                switch (choice) {
+                    case 1:
+                        String studentList = "\nСписок студентов:\n" + formatList(university.getStudentList());
+                        System.out.println(studentList);
+                        fileWriter.write(studentList);
+                        break;
+                    case 2:
+                        String employeeList = "\nСписок преподавателей:\n" + formatList(university.getEmployeeList());
+                        System.out.println(employeeList);
+                        fileWriter.write(employeeList);
+                        break;
+                    case 3:
+                        String facultyList = "\nСписок факультетов:\n" + formatList(university.getFacultyList());
+                        System.out.println(facultyList);
+                        fileWriter.write(facultyList);
+                        break;
+                    case 4:
+                        takeExam();
+                        break;
+                    case 5:
+                        System.out.println("До свидания!");
+                        fileWriter.write("Программа завершена.");
+                        break;
+                    default:
+                        System.out.println("Некорректный выбор. Попробуйте снова.");
+                        fileWriter.write("Неверный выбор. Пожалуйста, попробуйте снова.");
+                }
+                fileWriter.newLine();
+            } while (choice != 5);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void takeExam() {
         List<Student> students = university.getStudentList();
         Exam exam = new Exam(students);
         exam.takeExamAndSaveResults();
+    }
+
+    private BufferedWriter createLogFile() throws IOException {
+
+        String filePath = "console_logs/console_input.txt";
+        Path directoryPath = Paths.get("console_logs");
+
+        Files.createDirectories(directoryPath);
+
+        return new BufferedWriter(new FileWriter(filePath, true));
     }
 }

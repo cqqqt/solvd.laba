@@ -9,6 +9,13 @@ public class Employee extends Person {
         this.payScale = payScale;
     }
 
+    @Override
+    public String toString() {
+        return "Работник " + getFullName() + "{" +
+                "уровень зарплаты: " + payScale +
+                "} ";
+    }
+
     public int getPayScale() {
         return payScale;
     }

@@ -18,10 +18,10 @@ public class Professor extends Teacher {
 
     @Override
     public String toString() {
-        return "Professor{" +
-                "academicDegrees=" + academicDegrees +
-                ", researchPapers=" + researchPapers +
-                "} " + super.toString();
+        return "ѕрофессор " + getFullName() + "{" +
+                "академические степени: " + academicDegrees +
+                ", научные исследовательские работы: " + researchPapers +
+                "} ";
     }
 
     @Override

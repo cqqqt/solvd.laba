@@ -17,7 +17,7 @@ public class Faculty implements IEducationalElement {
     public String toString() {
         return "Факультет " + facultyName + " {" +
                 "декан: " + dean +
-                "} " + super.toString();
+                "} ";
     }
 
     @Override

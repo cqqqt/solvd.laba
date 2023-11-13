@@ -25,7 +25,7 @@ public class Schedule implements IEducationalElement {
                 ", время начала: " + startTime +
                 ", курс: " + course +
                 ", кабинет: " + classroom +
-                "} " + super.toString();
+                "} ";
     }
 
     @Override

@@ -18,6 +18,19 @@ public class Teacher extends Employee {
         this.experienceAge = 0;
     }
 
+    @Override
+    public String toString() {
+        return "Учитель {" +
+                ", имя: " + getFirstName() +
+                ", фамилия:" + getLastName() +
+                ", телефон: " + getPhoneNumber() +
+                ", возраст: " + getAge() +
+                ", уровень зарплаты: " + getPayScale() +
+                ", факультет: " + faculty +
+                ", предметы: " + subjects +
+                "} ";
+    }
+
     public Faculty getFaculty() {
         return faculty;
     }

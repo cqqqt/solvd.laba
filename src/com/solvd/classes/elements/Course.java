@@ -27,7 +27,7 @@ public class Course implements IEducationalElement {
                 "учитель: " + teacher +
                 ", студенты: " + students +
                 ", отведенные часы: " + hours +
-                "} " + super.toString();
+                "} ";
     }
 
     @Override

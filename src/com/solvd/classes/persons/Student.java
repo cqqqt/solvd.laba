@@ -3,6 +3,7 @@ package com.solvd.classes.persons;
 import com.solvd.classes.elements.Faculty;
 import com.solvd.enums.Subjects;
 
+import javax.security.auth.Subject;
 import java.util.*;
 
 public class Student extends Person {
@@ -38,9 +39,14 @@ public class Student extends Person {
         return grades;
     }
 
-    public List<Subjects> getSubjects() {
-        return subjects;
+    public List<String> getSubjects() {
+        List<String> subjectsList = new ArrayList<>();
+        for (Subjects subject : subjects) {
+            subjectsList.add(subject.getName());
+        }
+        return subjectsList;
     }
+
 
     public List<Subjects> getRandomSubjects() {
         List<Subjects> subjectsList = new ArrayList<>();
@@ -109,12 +115,16 @@ public class Student extends Person {
 
     @Override
     public String toString() {
-        return "Student{" +
-                "faculty=" + faculty +
-                ", specialization='" + specialization + '\'' +
-                ", GPA=" + GPA +
-                ", grades=" + grades +
-                ", subjects=" + subjects +
+        return "Студент {" +
+                ", имя: " + getFirstName() +
+                ", фамилия:" + getLastName() +
+                ", телефон: " + getPhoneNumber() +
+                ", возраст: " + getAge() +
+                ", факультет: " + faculty +
+                ", специализация: " + specialization +
+                ", средний балл: " + GPA +
+                ", оценки: " + grades +
+                ", предметы: " + subjects +
                 "} ";
     }
 

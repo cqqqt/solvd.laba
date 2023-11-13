@@ -14,6 +14,16 @@ public abstract class Person {
         this.age = age;
     }
 
+    @Override
+    public String toString() {
+        return "Человек {" +
+                "имя: " + firstName +
+                ", фамилия: " + lastName +
+                ", телефон: " + phoneNumber +
+                ", возраст: " + age +
+                "} ";
+    }
+
     public String getFirstName() {
         return firstName;
     }

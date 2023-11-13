@@ -1,6 +1,8 @@
 package com.solvd.classes.program;
 
 import com.solvd.classes.University;
+import com.solvd.classes.education.Exam;
+import com.solvd.classes.persons.Student;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -30,12 +32,12 @@ public class Menu {
         int choice;
 
         do {
-            System.out.println("hello");
-            System.out.println("\nМеню университета (Введите цифру 0-4):");
+            System.out.println("\nМеню университета (Введите цифру 0-5):");
             System.out.println("1 - Список студентов.");
             System.out.println("2 - Список преподавателей.");
             System.out.println("3 - Список факультетов.");
-            System.out.println("4 - Выйти.\n");
+            System.out.println("4 - Сдать экзамен.");
+            System.out.println("5 - Выйти.\n");
 
             choice = scanner.nextInt();
 
@@ -50,11 +52,20 @@ public class Menu {
                     System.out.println("\nСписок факультетов:\n" + formatList(university.getFacultyList()));
                     break;
                 case 4:
+                    takeExam();
+                    break;
+                case 5:
                     System.out.println("До свидания!");
                     break;
                 default:
                     System.out.println("Некорректный выбор. Попробуйте снова.");
             }
-        } while (choice != 4);
+        } while (choice != 5);
+    }
+
+    private void takeExam() {
+        List<Student> students = university.getStudentList();
+        Exam exam = new Exam(students);
+        exam.takeExamAndSaveResults();
     }
 }

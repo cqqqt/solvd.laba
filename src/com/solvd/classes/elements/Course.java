@@ -24,10 +24,10 @@ public class Course implements IEducationalElement {
     @Override
     public String toString() {
         return " урс " + name + "{" +
-                "учитель: " + teacher +
+                " учитель: " + teacher +
                 ", студенты: " + students +
                 ", отведенные часы: " + hours +
-                "} ";
+                " } ";
     }
 
     @Override

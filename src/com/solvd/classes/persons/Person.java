@@ -17,11 +17,11 @@ public abstract class Person {
     @Override
     public String toString() {
         return "Человек {" +
-                "имя: " + firstName +
+                " имя: " + firstName +
                 ", фамилия: " + lastName +
                 ", телефон: " + phoneNumber +
                 ", возраст: " + age +
-                "} ";
+                " } ";
     }
 
     public String getFirstName() {

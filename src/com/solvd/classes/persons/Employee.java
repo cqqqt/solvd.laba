@@ -12,8 +12,8 @@ public class Employee extends Person {
     @Override
     public String toString() {
         return "Работник " + getFullName() + "{" +
-                "уровень зарплаты: " + payScale +
-                "} ";
+                " уровень зарплаты : " + payScale +
+                " } ";
     }
 
     public int getPayScale() {

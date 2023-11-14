@@ -82,7 +82,7 @@ public class Student extends Person implements IStudent {
     public String toString() {
         return "Студент {" +
                 " имя: " + getFirstName() +
-                ", фамилия:" + getLastName() +
+                ", фамилия: " + getLastName() +
                 ", телефон: " + getPhoneNumber() +
                 ", возраст: " + getAge() +
                 ", факультет: " + faculty +
@@ -90,7 +90,7 @@ public class Student extends Person implements IStudent {
                 ", средний балл: " + GPA +
                 ", оценки: " + grades +
                 ", предметы: " + subjects +
-                "} ";
+                " } ";
     }
 
     @Override

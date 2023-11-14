@@ -21,11 +21,11 @@ public class Schedule implements IEducationalElement {
     @Override
     public String toString() {
         return "Расписание " + name + "{" +
-                "день недели: " + dayOfWeek +
+                " день недели: " + dayOfWeek +
                 ", время начала: " + startTime +
                 ", курс: " + course +
                 ", кабинет: " + classroom +
-                "} ";
+                " } ";
     }
 
     @Override

@@ -24,13 +24,13 @@ public class Teacher extends Employee implements ITeacher {
     public String toString() {
         return "Учитель {" +
                 " имя: " + getFirstName() +
-                ", фамилия:" + getLastName() +
+                ", фамилия: " + getLastName() +
                 ", телефон: " + getPhoneNumber() +
                 ", возраст: " + getAge() +
                 ", уровень зарплаты: " + getPayScale() +
                 ", факультет: " + faculty +
                 ", предметы: " + subjects +
-                "} ";
+                " } ";
     }
 
     public Faculty getFaculty() {

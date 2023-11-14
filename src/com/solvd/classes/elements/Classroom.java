@@ -17,9 +17,9 @@ public class Classroom implements IEducationalElement {
     @Override
     public String toString() {
         return "Кабинет " + number + " {" +
-                "вместимость: " + capacity +
+                " вместимость: " + capacity +
                 ", оборудование: " + equipment +
-                "} ";
+                " } ";
     }
 
     @Override

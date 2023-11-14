@@ -42,8 +42,10 @@ public class University {
 
     public static class Creator {
 
-        private static final List<String> FIRST_NAMES = Arrays.asList("Алексей", "Максим", "Дмитрий", "Глеб", "Александр", "Павел");
-        private static final List<String> LAST_NAMES = Arrays.asList("Курышев", "Орлов", "Прохоренко", "Прусаков", "Золотарев", "Уланов");
+        private static final List<String> FIRST_NAMES = Arrays.asList("Алексей", "Максим", "Дмитрий",
+                "Глеб", "Александр", "Павел");
+        private static final List<String> LAST_NAMES = Arrays.asList("Курышев", "Орлов", "Прохоренко",
+                "Прусаков", "Золотарев", "Уланов");
         private static final List<String> PHONE_NUMBERS = Arrays.asList("375296164399", "375296472834", "375294719060");
         private static final List<String> SPECIALIZATIONS = Arrays.asList("IT", "Математика", "Физика", "Химбио");
 
@@ -61,14 +63,16 @@ public class University {
         }
 
         private static Course generateRandomCourse(List<Student> students) {
-            String name = getRandomElement(Arrays.asList("Мировая экономика", "История искусства", "Основы теории физической культуры", "Энергетический обмен в организме", "Климатология"));
+            String name = getRandomElement(Arrays.asList("Мировая экономика", "История искусства", "Основы теории " +
+                    "физической культуры", "Энергетический обмен в организме", "Климатология"));
             Teacher teacher = generateRandomTeacher();
             int hours = random.nextInt(4) + 1;
             return new Course(name, teacher, students, hours);
         }
 
         private static Faculty generateRandomFaculty(List<Employee> employees) {
-            String facultyName = getRandomElement(Arrays.asList("Информационных Технологий и Компьютерных Наук", "Гуманитарных Наук", "Естественных Наук", "Общественных Наук", "Искусств и Дизайна"));
+            String facultyName = getRandomElement(Arrays.asList("Информационных Технологий и Компьютерных Наук", "" +
+                    "Гуманитарных Наук", "Естественных Наук", "Общественных Наук", "Искусств и Дизайна"));
             Employee dean = getRandomElement(employees);
             return new Faculty(facultyName, dean);
         }

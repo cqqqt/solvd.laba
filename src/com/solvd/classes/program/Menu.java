@@ -33,7 +33,7 @@ public class Menu {
         return formattedList.toString();
     }
 
-    public void startMenu() {
+    public void startMenu() throws FileException {
         Scanner scanner = new Scanner(System.in, StandardCharsets.UTF_8.name());
         int choice;
 
@@ -82,8 +82,9 @@ public class Menu {
             } while (choice != 5);
         }
         catch (FileException | IOException e) {
-            System.out.println("Ошибка записи в файл.");
-            e.printStackTrace();
+            FileException fileException = new FileException("Ошибка записи в файл: " + e.getMessage(), e);
+            fileException.logError();
+            throw fileException;
         }
     }
 
@@ -101,7 +102,9 @@ public class Menu {
             Files.createDirectories(directoryPath);
             return new BufferedWriter(new FileWriter(fileName, true));
         } catch (IOException e) {
-            throw new FileException("Ошибка при создании файла с логами: " + e.getMessage());
+            FileException fileException = new FileException("Ошибка при создании файла с логами: " + e.getMessage(), e);
+            fileException.logError();
+            throw fileException;
         }
     }
 

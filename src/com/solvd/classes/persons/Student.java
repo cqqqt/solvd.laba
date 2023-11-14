@@ -2,6 +2,7 @@ package com.solvd.classes.persons;
 
 import com.solvd.classes.elements.Faculty;
 import com.solvd.enums.Subjects;
+import com.solvd.exceptions.StudentException;
 
 import javax.security.auth.Subject;
 import java.util.*;
@@ -129,7 +130,10 @@ public class Student extends Person {
         return GPA;
     }
 
-    public void setGPA(double GPA) {
+    public void setGPA(double GPA) throws StudentException {
+        if (GPA < 0 || GPA > 10) {
+            throw new StudentException("Средний балл должен быть между 0 и 10");
+        }
         this.GPA = GPA;
     }
 }

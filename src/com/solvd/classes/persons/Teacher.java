@@ -1,6 +1,7 @@
 package com.solvd.classes.persons;
 
 import com.solvd.classes.elements.Faculty;
+import com.solvd.exceptions.TeacherException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,7 +52,10 @@ public class Teacher extends Employee {
         return experienceAge;
     }
 
-    public void setExperienceAge(int experienceAge) {
+    public void setExperienceAge(int experienceAge) throws TeacherException {
+        if (experienceAge < 0) {
+            throw new TeacherException("Стаж не может быть отрицательным");
+        }
         this.experienceAge = experienceAge;
     }
 }

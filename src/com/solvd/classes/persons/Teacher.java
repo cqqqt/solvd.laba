@@ -2,11 +2,12 @@ package com.solvd.classes.persons;
 
 import com.solvd.classes.elements.Faculty;
 import com.solvd.exceptions.TeacherException;
+import com.solvd.interfaces.ITeacher;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Teacher extends Employee {
+public class Teacher extends Employee implements ITeacher {
 
     protected Faculty faculty;
     protected List<String> subjects;
@@ -22,7 +23,7 @@ public class Teacher extends Employee {
     @Override
     public String toString() {
         return "Учитель {" +
-                ", имя: " + getFirstName() +
+                " имя: " + getFirstName() +
                 ", фамилия:" + getLastName() +
                 ", телефон: " + getPhoneNumber() +
                 ", возраст: " + getAge() +

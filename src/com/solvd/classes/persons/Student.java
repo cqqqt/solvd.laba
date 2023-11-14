@@ -3,11 +3,12 @@ package com.solvd.classes.persons;
 import com.solvd.classes.elements.Faculty;
 import com.solvd.enums.Subjects;
 import com.solvd.exceptions.StudentException;
+import com.solvd.interfaces.IStudent;
 
 import javax.security.auth.Subject;
 import java.util.*;
 
-public class Student extends Person {
+public class Student extends Person implements IStudent {
 
     private Faculty faculty;
     private String specialization;
@@ -80,7 +81,7 @@ public class Student extends Person {
     @Override
     public String toString() {
         return "Студент {" +
-                ", имя: " + getFirstName() +
+                " имя: " + getFirstName() +
                 ", фамилия:" + getLastName() +
                 ", телефон: " + getPhoneNumber() +
                 ", возраст: " + getAge() +

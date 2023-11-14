@@ -3,13 +3,11 @@ package com.solvd.classes.program;
 import com.solvd.classes.University;
 import com.solvd.classes.education.Exam;
 import com.solvd.classes.persons.Student;
+import com.solvd.exceptions.FileException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -69,18 +67,22 @@ public class Menu {
                         break;
                     case 4:
                         takeExam();
+                        fileWriter.write("Экзамен");
                         break;
                     case 5:
                         System.out.println("До свидания!");
                         fileWriter.write("Программа завершена.");
                         break;
                     default:
-                        System.out.println("Некорректный выбор. Попробуйте снова.");
-                        fileWriter.write("Неверный выбор. Пожалуйста, попробуйте снова.");
+                        String str = "Неверный выбор. Пожалуйста, попробуйте снова.";
+                        System.out.println(str);
+                        fileWriter.write(str);
                 }
                 fileWriter.newLine();
             } while (choice != 5);
-        } catch (IOException e) {
+        }
+        catch (FileException | IOException e) {
+            System.out.println("Ошибка записи в файл.");
             e.printStackTrace();
         }
     }
@@ -91,13 +93,20 @@ public class Menu {
         exam.takeExamAndSaveResults();
     }
 
-    private BufferedWriter createLogFile() throws IOException {
-
-        String filePath = "console_logs/console_input.txt";
+    private BufferedWriter createLogFile() throws IOException, FileException {
+        String fileName = "console_logs/console_input_" + getCurrentDate() + ".txt";
         Path directoryPath = Paths.get("console_logs");
 
-        Files.createDirectories(directoryPath);
-
-        return new BufferedWriter(new FileWriter(filePath, true));
+        try {
+            Files.createDirectories(directoryPath);
+            return new BufferedWriter(new FileWriter(fileName, true));
+        } catch (IOException e) {
+            throw new FileException("Ошибка при создании файла с логами: " + e.getMessage());
+        }
     }
+
+    private String getCurrentDate() {
+        return java.time.LocalDate.now().toString();
+    }
+
 }

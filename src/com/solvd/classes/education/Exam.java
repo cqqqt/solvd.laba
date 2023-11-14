@@ -57,7 +57,6 @@ public class Exam {
         try {
             new File("exam_results").mkdirs();
 
-            // Записываем результаты в файл
             try (FileWriter writer = new FileWriter(filePath, true)) {
                 writer.write("\nСтудент: " + student.getFirstName() + " " + student.getLastName() + "\n" +
                         "Предмет: " + subject + "\n" +

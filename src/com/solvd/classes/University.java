@@ -22,12 +22,12 @@ public class University {
 
     private String name;
     private String location;
-    private List<Student> studentList = new ArrayList<>();
-    private List<Employee> employeeList = new ArrayList<>();
-    private List<Schedule> scheduleList = new ArrayList<>();
-    private List<Faculty> facultyList = new ArrayList<>();
-    private List<Course> courseList = new ArrayList<>();
-    private List<Classroom> classroomList = new ArrayList<>();
+    private List<Student> studentList;
+    private List<Employee> employeeList;
+    private List<Schedule> scheduleList;
+    private List<Faculty> facultyList;
+    private List<Course> courseList;
+    private List<Classroom> classroomList;
 
     public University(String name, String location) {
         this.name = name;

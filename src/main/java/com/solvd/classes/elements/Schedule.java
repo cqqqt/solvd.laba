@@ -1,6 +1,5 @@
 package com.solvd.classes.elements;
 
-import com.solvd.classes.program.Menu;
 import com.solvd.interfaces.IEducationalElement;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -26,11 +25,11 @@ public class Schedule implements IEducationalElement {
     @Override
     public String toString() {
         return "Расписание " + name + "{" +
-                " день недели: " + dayOfWeek +
-                ", время начала: " + startTime +
-                ", курс: " + course +
-                ", кабинет: " + classroom +
-                " } ";
+                " \n\tдень недели: " + dayOfWeek +
+                ", \n\tвремя начала: " + startTime +
+                ", \n\tкурс: " + course +
+                ", \n\tкабинет: " + classroom +
+                " \n} ";
     }
 
     @Override

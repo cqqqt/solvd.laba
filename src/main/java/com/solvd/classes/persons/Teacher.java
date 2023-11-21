@@ -1,7 +1,6 @@
 package com.solvd.classes.persons;
 
 import com.solvd.classes.elements.Faculty;
-import com.solvd.classes.program.Menu;
 import com.solvd.exceptions.TeacherException;
 import com.solvd.interfaces.ITeacher;
 import org.apache.logging.log4j.LogManager;
@@ -28,14 +27,14 @@ public class Teacher extends Employee implements ITeacher {
     @Override
     public String toString() {
         return "Учитель {" +
-                " имя: " + getFirstName() +
-                ", фамилия: " + getLastName() +
-                ", телефон: " + getPhoneNumber() +
-                ", возраст: " + getAge() +
-                ", уровень зарплаты: " + getPayScale() +
-                ", факультет: " + faculty +
-                ", предметы: " + subjects +
-                " } ";
+                " \n\tимя: " + getFirstName() +
+                ", \n\tфамилия: " + getLastName() +
+                ", \n\tтелефон: " + getPhoneNumber() +
+                ", \n\tвозраст: " + getAge() +
+                ", \n\tуровень зарплаты: " + getPayScale() +
+                ", \n\tфакультет: " + faculty +
+                ", \n\tпредметы: " + subjects +
+                " \n} ";
     }
 
     public Faculty getFaculty() {

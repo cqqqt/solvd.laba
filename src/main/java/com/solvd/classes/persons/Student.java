@@ -1,7 +1,6 @@
 package com.solvd.classes.persons;
 
 import com.solvd.classes.elements.Faculty;
-import com.solvd.classes.program.Menu;
 import com.solvd.enums.Subjects;
 import com.solvd.exceptions.StudentException;
 import com.solvd.interfaces.IStudent;
@@ -88,16 +87,16 @@ public class Student extends Person implements IStudent {
     @Override
     public String toString() {
         return "Студент {" +
-                " имя: " + getFirstName() +
-                ", фамилия: " + getLastName() +
-                ", телефон: " + getPhoneNumber() +
-                ", возраст: " + getAge() +
-                ", факультет: " + faculty +
-                ", специализация: " + specialization +
-                ", средний балл: " + GPA +
-                ", оценки: " + grades +
-                ", предметы: " + subjects +
-                " } ";
+                " \n\tимя: " + getFirstName() +
+                ", \n\tфамилия: " + getLastName() +
+                ", \n\tтелефон: " + getPhoneNumber() +
+                ", \n\tвозраст: " + getAge() +
+                ", \n\tфакультет: " + faculty +
+                ", \n\tспециализация: " + specialization +
+                ", \n\tсредний балл: " + GPA +
+                ", \n\tоценки: " + grades +
+                ", \n\tпредметы: " + subjects +
+                " \n} ";
     }
 
     @Override

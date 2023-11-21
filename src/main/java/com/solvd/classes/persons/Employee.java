@@ -1,6 +1,5 @@
 package com.solvd.classes.persons;
 
-import com.solvd.classes.program.Menu;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -17,9 +16,9 @@ public class Employee extends Person {
 
     @Override
     public String toString() {
-        return "Работник " + getFullName() + "{" +
-                " уровень зарплаты : " + payScale +
-                " } ";
+        return "Работник " + getFullName() + " {" +
+                " \n\t\t\tуровень зарплаты: " + payScale +
+                " \n\t\t} ";
     }
 
     public int getPayScale() {

@@ -1,5 +1,6 @@
 package com.solvd.classes.program;
 
+import com.solvd.classes.menu.Menu;
 import com.solvd.exceptions.FileException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

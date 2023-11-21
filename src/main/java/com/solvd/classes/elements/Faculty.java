@@ -1,7 +1,6 @@
 package com.solvd.classes.elements;
 
 import com.solvd.classes.persons.Employee;
-import com.solvd.classes.program.Menu;
 import com.solvd.interfaces.IEducationalElement;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -21,8 +20,8 @@ public class Faculty implements IEducationalElement {
     @Override
     public String toString() {
         return " Факультет " + facultyName + " {" +
-                " декан: " + dean +
-                " } ";
+                " \n\t\tдекан: " + dean +
+                " \n\t} ";
     }
 
     @Override

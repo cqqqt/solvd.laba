@@ -1,7 +1,6 @@
 package com.solvd.classes.education;
 
 import com.solvd.classes.persons.Student;
-import com.solvd.classes.program.Menu;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

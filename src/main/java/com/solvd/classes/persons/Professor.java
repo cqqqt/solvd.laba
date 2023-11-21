@@ -1,7 +1,6 @@
 package com.solvd.classes.persons;
 
 import com.solvd.classes.elements.Faculty;
-import com.solvd.classes.program.Menu;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -23,10 +22,10 @@ public class Professor extends Teacher {
 
     @Override
     public String toString() {
-        return "Профессор " + getFullName() + "{" +
-                " академические степени: " + academicDegrees +
-                ", научные исследовательские работы: " + researchPapers +
-                " } ";
+        return "Профессор " + getFullName() + " {" +
+                " \n\tакадемические степени: " + academicDegrees +
+                ", \n\tнаучные исследовательские работы: " + researchPapers +
+                " \n} ";
     }
 
     @Override

@@ -5,15 +5,13 @@ import com.solvd.classes.elements.Course;
 import com.solvd.classes.elements.Faculty;
 import com.solvd.classes.elements.Schedule;
 import com.solvd.classes.persons.Employee;
+import com.solvd.classes.persons.Person;
 import com.solvd.classes.persons.Student;
 import com.solvd.classes.persons.Teacher;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class University {
 
@@ -21,37 +19,55 @@ public class University {
 
     private String name;
     private String location;
-    private List<Student> studentList;
-    private List<Employee> employeeList;
-    private List<Schedule> scheduleList;
-    private List<Faculty> facultyList;
-    private List<Course> courseList;
-    private List<Classroom> classroomList;
+    private static List<Student> studentList;
+    private static List<Employee> employeeList;
+    private static List<Schedule> scheduleList;
+    private static List<Faculty> facultyList;
+    private static List<Course> courseList;
+    private static Set<Classroom> classroomSet;
 
     public University(String name, String location) {
         this.name = name;
         this.location = location;
-        this.studentList = new ArrayList<>();
-        this.employeeList = new ArrayList<>();
-        this.scheduleList = new ArrayList<>();
-        this.facultyList = new ArrayList<>();
-        this.courseList = new ArrayList<>();
-        this.classroomList = new ArrayList<>();
+        studentList = new ArrayList<>();
+        employeeList = new ArrayList<>();
+        scheduleList = new ArrayList<>();
+        facultyList = new ArrayList<>();
+        courseList = new ArrayList<>();
+        classroomSet = new HashSet<>();
     }
 
     public static class Creator {
 
-        private static final List<String> FIRST_NAMES = Arrays.asList("Алексей", "Максим", "Дмитрий",
-                "Глеб", "Александр", "Павел");
-        private static final List<String> LAST_NAMES = Arrays.asList("Курышев", "Орлов", "Прохоренко",
-                "Прусаков", "Золотарев", "Уланов");
-        private static final List<String> PHONE_NUMBERS = Arrays.asList("375296164399", "375296472834", "375294719060");
+        private static final List<String> FIRST_NAMES = Arrays.asList("Артем", "Дмитрий", "Иван",
+                "Николай", "Александр", "Максим", "Владимир", "Андрей", "Сергей", "Алексей", "Кирилл", "Егор", "Павел",
+                "Василий", "Михаил");
+        private static final List<String> LAST_NAMES = Arrays.asList("Иванов", "Смирнов", "Кузнецов",
+                "Попов", "Васильев", "Петров", "Соколов", "Михайлов", "Новиков", "Федоров", "Морозов", "Волков", "Алексеев",
+                "Лебедев", "Семенов");
         private static final List<String> SPECIALIZATIONS = Arrays.asList("IT", "Математика", "Физика", "Химбио");
 
-        private static Random random = new Random();
+        private static final Random random = new Random();
 
         private static <T> T getRandomElement(List<T> list) {
             return list.get(random.nextInt(list.size()));
+        }
+
+        private static <T> T getRandomElementFromSet(Set<T> set) {
+            List<T> list = List.copyOf(set);
+
+            return getRandomElement(list);
+        }
+
+        private static String generateRandomPhoneNumber() {
+            String prefix = random.nextBoolean() ? "37529" : "37544";
+            StringBuilder phoneNumber = new StringBuilder(prefix);
+
+            for (int i = 0; i < 7; i++) {
+                phoneNumber.append(random.nextInt(10));
+            }
+
+            return phoneNumber.toString();
         }
 
         private static Classroom generateRandomClassroom() {
@@ -76,33 +92,40 @@ public class University {
             return new Faculty(facultyName, dean);
         }
 
-        private static Schedule generateRandomSchedule(List<Course> courses, List<Classroom> classrooms) {
+        private static Schedule generateRandomSchedule(List<Course> courses, Set<Classroom> classrooms) {
             String name = "#" + random.nextInt(5);
             String dayOfWeek = getRandomElement(Arrays.asList("Monday", "Tuesday", "Wednesday", "Thursday", "Friday"));
             String startTime = random.nextInt(12) + ":00";
             Course course = getRandomElement(courses);
-            Classroom classroom = getRandomElement(classrooms);
+            Classroom classroom = getRandomElementFromSet(classrooms);
             return new Schedule(name, dayOfWeek, startTime, course, classroom);
         }
 
         private static Employee generateRandomEmployee() {
             String firstName = getRandomElement(FIRST_NAMES);
             String lastName = getRandomElement(LAST_NAMES);
-            String phoneNumber = getRandomElement(PHONE_NUMBERS);
+            String phoneNumber = generateRandomPhoneNumber();
             int age = random.nextInt(20) + 30;
             int payScale = random.nextInt(3) + 1;
             return new Employee(firstName, lastName, phoneNumber, age, payScale);
         }
 
         private static Student generateRandomStudent() {
-            String firstName = getRandomElement(FIRST_NAMES);
-            String lastName = getRandomElement(LAST_NAMES);
-            String phoneNumber = getRandomElement(PHONE_NUMBERS);
+            String firstName;
+            String lastName;
+
+            do {
+                firstName = getRandomElement(FIRST_NAMES);
+                lastName = getRandomElement(LAST_NAMES);
+            } while (isNameAndLastNameAlreadyExist(firstName, lastName));
+
+            String phoneNumber = generateRandomPhoneNumber();
             int age = random.nextInt(10) + 18;
             Employee e1 = generateRandomEmployee();
             Employee e2 = generateRandomEmployee();
             List<Employee> employeeList = Arrays.asList(e1, e2);
             Faculty faculty = generateRandomFaculty(employeeList);
+            facultyList.add(faculty);
             String specialization = getRandomElement(SPECIALIZATIONS);
             return new Student(firstName, lastName, phoneNumber, age, faculty, specialization);
         }
@@ -110,49 +133,76 @@ public class University {
         private static Teacher generateRandomTeacher() {
             String firstName = getRandomElement(FIRST_NAMES);
             String lastName = getRandomElement(LAST_NAMES);
-            String phoneNumber = getRandomElement(PHONE_NUMBERS);
+            String phoneNumber = generateRandomPhoneNumber();
             int age = random.nextInt(20) + 30;
             int payScale = random.nextInt(3) + 1;
             Employee e1 = generateRandomEmployee();
             Employee e2 = generateRandomEmployee();
             List<Employee> employeeList = Arrays.asList(e1, e2);
             Faculty faculty = generateRandomFaculty(employeeList);
+            facultyList.add(faculty);
             return new Teacher(firstName, lastName, phoneNumber, age, payScale, faculty);
         }
 
         public static University generateDefaultUniversity() {
-            University university = new University("Default University", "Default Location");
+            University university = new University("Solvd University", "Some Location");
 
             for (int i = 0; i < 10; i++) {
-                university.studentList.add(generateRandomStudent());
+                studentList.add(generateRandomStudent());
             }
 
             for (int i = 0; i < 5; i++) {
-                university.employeeList.add(generateRandomTeacher());
+                employeeList.add(generateRandomTeacher());
             }
 
-            university.facultyList.add(generateRandomFaculty(university.employeeList));
+            facultyList.add(generateRandomFaculty(employeeList));
 
             for (int i = 0; i < 3; i++) {
-                university.classroomList.add(generateRandomClassroom());
+                classroomSet.add(generateRandomClassroom());
             }
 
-            university.courseList.add(generateRandomCourse(university.studentList));
+            courseList.add(generateRandomCourse(studentList));
 
             for (int i = 0; i < 2; i++) {
-                university.scheduleList.add(generateRandomSchedule(university.courseList, university.classroomList));
+                scheduleList.add(generateRandomSchedule(courseList, classroomSet));
             }
 
             return university;
         }
     }
 
+    private static boolean isNameAndLastNameAlreadyExist(String firstName, String lastName) {
+        for (Student person : studentList) {
+            if (person != null) {
+                if (person.getFirstName().equals(firstName) && person.getLastName().equals(lastName)) {
+                    return true;
+                }
+            }
+        }
+
+        for (Person person : employeeList) {
+            if (person instanceof Student) {
+                Student student = (Student) person;
+                if (student.getFirstName().equals(firstName) && student.getLastName().equals(lastName)) {
+                    return true;
+                }
+            } else if (person instanceof Teacher) {
+                Teacher teacher = (Teacher) person;
+                if (teacher.getFirstName().equals(firstName) && teacher.getLastName().equals(lastName)) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
     public List<Course> getCourseList() {
         return courseList;
     }
 
-    public List<Classroom> getClassroomList() {
-        return classroomList;
+    public Set<Classroom> getClassroomSet() {
+        return classroomSet;
     }
 
     public List<Employee> getEmployeeList() {

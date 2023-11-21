@@ -1,6 +1,5 @@
 package com.solvd.classes.elements;
 
-import com.solvd.classes.program.Menu;
 import com.solvd.interfaces.IEducationalElement;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -22,9 +21,9 @@ public class Classroom implements IEducationalElement {
     @Override
     public String toString() {
         return "Кабинет " + number + " {" +
-                " вместимость: " + capacity +
-                ", оборудование: " + equipment +
-                " } ";
+                "\n\tвместимость: " + capacity +
+                ", \n\tоборудование: " + equipment +
+                " \n} ";
     }
 
     @Override

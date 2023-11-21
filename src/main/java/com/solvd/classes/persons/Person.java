@@ -1,6 +1,5 @@
 package com.solvd.classes.persons;
 
-import com.solvd.classes.program.Menu;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -23,11 +22,11 @@ public abstract class Person {
     @Override
     public String toString() {
         return "Человек {" +
-                " имя: " + firstName +
-                ", фамилия: " + lastName +
-                ", телефон: " + phoneNumber +
-                ", возраст: " + age +
-                " } ";
+                " \n\tимя: " + firstName +
+                ", \n\tфамилия: " + lastName +
+                ", \n\tтелефон: " + phoneNumber +
+                ", \n\tвозраст: " + age +
+                " \n} ";
     }
 
     public String getFirstName() {

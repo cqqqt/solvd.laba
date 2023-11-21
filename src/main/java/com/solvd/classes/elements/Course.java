@@ -2,7 +2,6 @@ package com.solvd.classes.elements;
 
 import com.solvd.classes.persons.Student;
 import com.solvd.classes.persons.Teacher;
-import com.solvd.classes.program.Menu;
 import com.solvd.interfaces.IEducationalElement;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -29,10 +28,10 @@ public class Course implements IEducationalElement {
     @Override
     public String toString() {
         return "Курс " + name + "{" +
-                " учитель: " + teacher +
-                ", студенты: " + students +
-                ", отведенные часы: " + hours +
-                " } ";
+                " \n\tучитель: " + teacher +
+                ", \n\tстуденты: " + students +
+                ", \n\tотведенные часы: " + hours +
+                " \n} ";
     }
 
     @Override

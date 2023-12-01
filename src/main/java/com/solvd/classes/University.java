@@ -8,6 +8,9 @@ import com.solvd.classes.persons.Employee;
 import com.solvd.classes.persons.Person;
 import com.solvd.classes.persons.Student;
 import com.solvd.classes.persons.Teacher;
+import com.solvd.enums.Courses;
+import com.solvd.enums.DaysOfWeek;
+import com.solvd.enums.Faculties;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -78,23 +81,24 @@ public class University {
         }
 
         private static Course generateRandomCourse(List<Student> students) {
-            String name = getRandomElement(Arrays.asList("Мировая экономика", "История искусства", "Основы теории " +
-                    "физической культуры", "Энергетический обмен в организме", "Климатология"));
+            Courses courseEnum = getRandomElement(Arrays.asList(Courses.values()));
+            String name = courseEnum.getName();
             Teacher teacher = generateRandomTeacher();
             int hours = random.nextInt(4) + 1;
             return new Course(name, teacher, students, hours);
         }
 
         private static Faculty generateRandomFaculty(List<Employee> employees) {
-            String facultyName = getRandomElement(Arrays.asList("Информационных Технологий и Компьютерных Наук", "" +
-                    "Гуманитарных Наук", "Естественных Наук", "Общественных Наук", "Искусств и Дизайна"));
+            Faculties facultyEnum = getRandomElement(Arrays.asList(Faculties.values()));
+            String facultyName = facultyEnum.getName();
             Employee dean = getRandomElement(employees);
             return new Faculty(facultyName, dean);
         }
 
         private static Schedule generateRandomSchedule(List<Course> courses, Set<Classroom> classrooms) {
+            DaysOfWeek dayEnum = getRandomElement(Arrays.asList(DaysOfWeek.values()));
+            String dayOfWeek = dayEnum.getDayOfWeek();
             String name = "#" + random.nextInt(5);
-            String dayOfWeek = getRandomElement(Arrays.asList("Monday", "Tuesday", "Wednesday", "Thursday", "Friday"));
             String startTime = random.nextInt(12) + ":00";
             Course course = getRandomElement(courses);
             Classroom classroom = getRandomElementFromSet(classrooms);

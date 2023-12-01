@@ -25,7 +25,7 @@ public class EmployeeMenu{
     }
 
     public void displayMenu() {
-        Scanner scanner = new Scanner(System.in, StandardCharsets.UTF_8.name());
+        Scanner scanner = new Scanner(System.in, "windows-1251");
         int employeeMenuChoice;
 
         do {
@@ -62,11 +62,11 @@ public class EmployeeMenu{
     }
 
     private void addEmployee() {
-
+        //todo
     }
 
     private void deleteEmployee() {
-
+        //todo
     }
 
     private BufferedWriter createLogFile() throws IOException, FileException {

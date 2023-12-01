@@ -25,7 +25,7 @@ public class FacultyMenu {
     }
 
     public void displayMenu() {
-        Scanner scanner = new Scanner(System.in, StandardCharsets.UTF_8.name());
+        Scanner scanner = new Scanner(System.in, "windows-1251");
         int facultyMenuChoice;
 
         do {
@@ -62,11 +62,11 @@ public class FacultyMenu {
     }
 
     private void addFaculty() {
-
+        //todo
     }
 
     private void deleteFaculty() {
-
+        //todo
     }
 
     private BufferedWriter createLogFile() throws IOException, FileException {

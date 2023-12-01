@@ -56,7 +56,7 @@ public class Menu {
     }
 
     public void startMenu() throws FileException {
-        Scanner scanner = new Scanner(System.in, StandardCharsets.UTF_8.name());
+        Scanner scanner = new Scanner(System.in, "windows-1251");
         int choice;
 
         try (BufferedWriter fileWriter = createLogFile()) {

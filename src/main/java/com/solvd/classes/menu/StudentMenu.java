@@ -29,7 +29,7 @@ public class StudentMenu {
     }
 
     public void displayMenu() {
-        Scanner scanner = new Scanner(System.in, StandardCharsets.UTF_8.name());
+        Scanner scanner = new Scanner(System.in, "windows-1251");
         int studentMenuChoice;
 
         do {
@@ -69,7 +69,7 @@ public class StudentMenu {
     }
 
     private void addStudent() {
-        Scanner scanner = new Scanner(System.in, StandardCharsets.UTF_8.name());
+        Scanner scanner = new Scanner(System.in, "windows-1251");
 
         LOGGER.info("Введите имя студента:");
         String firstName = scanner.nextLine();
@@ -94,7 +94,7 @@ public class StudentMenu {
     }
 
     private void deleteStudent() {
-        Scanner scanner = new Scanner(System.in, StandardCharsets.UTF_8.name());
+        Scanner scanner = new Scanner(System.in, "windows-1251");
 
         LOGGER.info("Введите имя студента для удаления:");
         String firstName = scanner.nextLine();

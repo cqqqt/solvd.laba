@@ -17,6 +17,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Scanner;
+import java.util.function.BiPredicate;
+import java.util.stream.Collectors;
 
 public class StudentMenu {
 
@@ -37,6 +39,7 @@ public class StudentMenu {
             LOGGER.info("1 - Просмотреть список студентов.");
             LOGGER.info("2 - Добавить студента.");
             LOGGER.info("3 - Удалить студента.");
+            LOGGER.info("4 - Просмотреть студентов старше определенного возраста.");
             LOGGER.info("0 - Вернуться в предыдущее меню.\n");
 
             studentMenuChoice = scanner.nextInt();
@@ -52,6 +55,11 @@ public class StudentMenu {
                     deleteStudent();
                     break;
                 case 4:
+                    LOGGER.info("Введите возраст для фильтрации студентов:");
+                    int filterAge = scanner.nextInt();
+                    filterStudentsByAge(filterAge);
+                    break;
+                case 5:
                     takeExam();
                     break;
                 case 0:
@@ -66,6 +74,17 @@ public class StudentMenu {
     private void displayStudentList() {
         String studentList = "\nСписок студентов:\n" + Menu.formatList(university.getStudentList());
         LOGGER.info(studentList);
+    }
+
+    private void filterStudentsByAge(int filterAge) {
+        BiPredicate<Student, Integer> filterByAge = (student, age) -> student.getAge() > age;
+
+        List<Student> studentsAboveAge = university.getStudentList().stream()
+                .filter(student -> filterByAge.test(student, filterAge))
+                .collect(Collectors.toList());
+
+        String result = "\nСтуденты старше " + filterAge + " лет:\n" + Menu.formatList(studentsAboveAge);
+        LOGGER.info(result);
     }
 
     private void addStudent() {
